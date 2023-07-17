@@ -1,0 +1,37 @@
+/routing_test/app/views/public/cart_items/index.html.erb
+
+<h2>ショッピングカート</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>チョコバナナミルフィーユ</td>
+      <td>1,100</td>
+      <td>1</td>
+      <td>1,100</td>
+      <td>削除する</td>
+    </tr>
+  </tbody>
+</table>
+
+買い物を続ける
+
+合計金額|1,760
+
+<div>情報入力に進む</div>
+
+<%= link_to "TOP", "/" %>
+<%= link_to "ABOUT", "/about" %>
+<%= link_to "商品一覧", "/items" %>
+<%= link_to "商品詳細", "/items/:id" %>
+<%= link_to "カート内商品", "/cart_items" %>

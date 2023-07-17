@@ -1,0 +1,26 @@
+<div class="genres-box">
+  <p><b>ジャンル検索</b></p>
+  <div>
+    <p>ケーキ</p>
+    <p>焼き菓子</p>
+    <p>プリン</p>
+    <p>キャンディ</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="topic-title">
+    <h2>商品一覧(全<%= @items_all.count %>件)</h2>
+  </div>
+  <div class="item">
+    <% @items.each do |item| %>
+      <p>画像</p>
+      <p><%= item.name %></p>
+      <p><%= item.price %></p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "TOP", root_path %>
+<%= link_to "ABOUT", about_path %>
+<%= link_to "商品一覧", items_path %>
