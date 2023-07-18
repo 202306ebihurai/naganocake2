@@ -18,8 +18,8 @@
    <%= f.text_field :price, placeholder:"1000" %>円
  
    <h4>販売ステータス</h4>
-   <%= f.radio_button :packing, "true" %>販売中
-   <%= f.radio_button :packing, "false" %>販売停止
+   <%= f.radio_button :is_active, "true" %>　販売中
+   <%= f.radio_button :is_active, "false" %>　販売停止
  
    <br><%= f.submit '新規投稿' %>
  <% end %>
