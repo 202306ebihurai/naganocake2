@@ -7,4 +7,5 @@ class Item < ApplicationRecord
 
   has_many :orders, through: :order_details
   
+  validates :is_active, inclusion: {in: [true, false]}
 end
