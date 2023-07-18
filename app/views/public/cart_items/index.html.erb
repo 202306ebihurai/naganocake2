@@ -1,4 +1,5 @@
 <h2>ショッピングカート</h2>
+<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: { confirm: "本当にすべて削除しますか？" } %>
 
 <table>
   <thead>
@@ -16,10 +17,16 @@
       <tr>
         <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.with_tax_price %></td>
-        <td><%= cart_item.quantity %></td>
+        <td>
+          <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+            <%= f.select :quantity, (1..10), include_blank: "#{cart_item.quantity}" %>
+            <%= f.submit "変更" %>
+          <% end %>
+        </td>
         <td><%= cart_item.subtotal %></td>
         <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
       </tr>
+      <% @cart_total_amount +=  cart_item.subtotal %>
     <% end %>
   </tbody>
 </table>
