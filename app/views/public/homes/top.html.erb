@@ -19,9 +19,13 @@
   <h2>新着商品</h2>
   <div class="item">
     <% @items.each do |item| %>
-      <p>画像</p>
+      <p>
+        <%= link_to item_path(item) do %>
+          画像
+        <% end %>
+      </p>
       <p><%= item.name %></p>
-      <p><%= item.price %></p>
+      <p><%= item.price_with_tax %>(税込)</p>
     <% end %>
   </div>
 </div>
