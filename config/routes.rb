@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -21,12 +21,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, only: [:index, :show]
     get 'customers/mypage' => 'customers#show'
     get 'customers/edit'
-    resources :cart_items, only: [:index, :update, :destroy, :create], controller: "public/cart_items" do
+    resources :cart_items, only: [:index, :update, :destroy, :create], controller: "cart_items" do
       collection do
         delete "destroy_all"
       end
     end
-    resources :orders, only: [:new, :create, :index, :show], controller: "public/cart_items" do
+    resources :orders, only: [:new, :create, :index, :show], controller: "orders" do
       collection do
         post "confirm"
         get "thanks"

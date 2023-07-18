@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
-    @items = Item.find(params[:id])
-    @item_price_with_tax = @items.price_with_tax
+    @item = Item.find(params[:id])
+    @item_price_with_tax = @item.with_tax_price
   end
 end

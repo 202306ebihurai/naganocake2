@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  TAX_RATE = 0.1
+  TAX_RATE = 10 #%表記
 
   has_one_attached :image
   has_many :cart_items, dependent: :destroy
@@ -8,8 +8,8 @@ class Item < ApplicationRecord
 
   has_many :orders, through: :order_details
 
-  def price_with_tax
-    (price * (1 + TAX_RATE)).round
+  def with_tax_price
+    (price * (1 + TAX_RATE)).floor
   end
 
 end

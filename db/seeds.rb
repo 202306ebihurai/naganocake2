@@ -26,7 +26,7 @@ Item.create!(
   is_active: true,
   genre_id: 1,
 )
-5.times do |n|
+10.times do |n|
   Item.create!(
   name: "Test#{n + 1}",
   introduction: "Test#{n + 1}を贅沢に使用しています。",
@@ -35,3 +35,16 @@ Item.create!(
   genre_id: 2,
   )
 end
+
+# Customer.create!(
+#   last_name: "姓",
+#   first_name: "名",
+#   last_name_kana: "セイ",
+#   first_name_kana: "メイ",
+#   postcode: "1234567",
+#   address: "123456",
+#   phone_number: "123456",
+#   email: "aaa@aaa",
+#   encrypted_password: "aaaaaa",
+#   is_deleted: false
+# )
