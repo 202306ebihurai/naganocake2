@@ -13,8 +13,8 @@
        <tbody>
          <% @genres.each do |genre| %>
          <tr>
-           <th><%= @genre.name %></th>
-           <th><%= link_to edit_admin_genre_path(@genre) do %> 編集する</th><% end %>
+           <th><%= genre.name %></th>
+           <th><%= link_to edit_admin_genre_path(genre) do %> 編集する</th><% end %>
          </tr>
          <% end %>
        </tbody>

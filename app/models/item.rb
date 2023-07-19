@@ -8,8 +8,12 @@ class Item < ApplicationRecord
 
   has_many :orders, through: :order_details
 
+
   def with_tax_price
     (price * (1 + TAX_RATE * 0.01)).floor
   end
+
+  
+  validates :is_active, inclusion: {in: [true, false]}
 
 end

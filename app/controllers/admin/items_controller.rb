@@ -7,11 +7,12 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save
+    redirect_to admin_item_path(@item)
   end
 
   def index
     @items = Item.all
-    @item =  Item.find(params[:id])
+   # @item = Item.find(params[:id])
   end
 
   def edit
@@ -31,7 +32,7 @@ end
   
   private
     def item_params
-      params.require(:item).permit(:image, :name, :introduction, :price)
+      params.require(:item).permit(:image, :name, :introduction, :price, :genre_id, :is_active)
     end
 
 
