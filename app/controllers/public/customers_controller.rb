@@ -16,10 +16,20 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def unsubscribe
+  end
+
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
   private
 
   def customer_params
     params.require(:customer).permit(
-      :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :email)
+      :last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :phone_number, :email, :encrypted_password)
   end
 end
