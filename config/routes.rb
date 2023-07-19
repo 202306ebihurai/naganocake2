@@ -22,6 +22,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
     resources :cart_items, only: [:index, :update, :destroy, :create], controller: "cart_items" do
       collection do
         delete "destroy_all"
