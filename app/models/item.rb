@@ -14,6 +14,6 @@ class Item < ApplicationRecord
   end
 
   
-  validates :is_active, inclusion: {in: [true, false]}
+  validates :is_active, inclusion: {in: [true, false]} #販売ステータス
 
 end
