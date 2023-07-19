@@ -5,13 +5,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-  @cart_item = CartItem.find(params[:id])
-  if @cart_item.update(cart_item_params)
-    redirect_to cart_items_path, notice: "数量が更新されました。"
-  else
-    redirect_to cart_items_path, notice: "数量の更新に失敗しました。"
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to cart_items_path, notice: "数量が更新されました。"
+    else
+      redirect_to cart_items_path, alert: "数量の更新に失敗しました。"
+    end
   end
-end
 
   def destroy
     @cart_item = CartItem.find(params[:id])

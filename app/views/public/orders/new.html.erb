@@ -1,12 +1,51 @@
 <h2>注文情報入力</h2>
 
 <div>
-  <p>支払方法</p>
-  <% form_with model: order, url: confirm_orders, method: :post do |f| %>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-    <%= f.label :payment_method_credit_card, "クレジットカード" %>
+  <%= form_with model: @order, url: confirm_orders_path do |f| %>
+    <div>
+      <p>支払方法</p>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
 
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :payment_method_transfer, "銀行振込" %>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+    </div>
+    <div>
+      <p>お届け先</p>
+      <div>
+        <%= f.radio_button :address_type, "my_address", {:checked => true}%>
+        <%= f.label :address_type_my_address, "ご自身の住所" %><br>
+        <%= "〒" + current_customer.postcode + " " + current_customer.address %><br>
+        <%= current_customer.last_name + " " + current_customer.first_name %>
+      </div>
+
+      <div>
+        <%= f.radio_button :address_type, "receiver_address" %>
+        <%= f.label :address_type_receiver_address, "登録済住所から選択" %><br>
+        <%= f.select :address_type_receiver_address, options_from_collection_for_select(Address.all, :id, :address_display) %>
+      </div>
+
+      <div>
+        <div>
+          <%= f.radio_button :address_type, "new_address" %>
+          <%= f.label :address_number_new_address, "新しいお届け先" %>
+        </div>
+        <div>
+          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+          <%= f.text_field :postcode %>
+        </div>
+        <div>
+          <%= f.label :address, "住所" %>
+          <%= f.text_field :address %>
+        </div>
+        <div>
+          <%= f.label :address_name, "宛名" %>
+          <%= f.text_field :address_name %>
+        </div>
+      </div>
+
+    </div>
+
+    <%= f.submit "確認画面へ進む" %>
   <% end %>
 </div>
