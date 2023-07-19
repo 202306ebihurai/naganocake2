@@ -1,10 +1,9 @@
 <div class="genres-box">
   <p><b>ジャンル検索</b></p>
   <div>
-    <p>ケーキ</p>
-    <p>焼き菓子</p>
-    <p>プリン</p>
-    <p>キャンディ</p>
+    <% @genre.each do |genre| %>
+      <%= genre.name %>
+    <% end %>
   </div>
 </div>
 
@@ -14,12 +13,17 @@
   </div>
   <div class="item">
     <% @items.each do |item| %>
-      <p>画像</p>
+      <p>
+        <%= link_to item_path(item) do %>
+          画像
+         <% end %>
+      </p>
       <p><%= item.name %></p>
-      <p><%= item.price %></p>
+      <p><%= item.with_tax_price %></p>
     <% end %>
   </div>
 </div>
+<%= paginate @items %>
 
 <%= link_to "TOP", root_path %>
 <%= link_to "ABOUT", about_path %>
