@@ -1,10 +1,11 @@
 class Admin::ItemsController < ApplicationController
+  
   def new
     @item = Item.new
     @genres = Genre.all
   end
   
-  def create
+  def create #商品の新規登録
     @item = Item.new(item_params)
     @item.save
     redirect_to admin_item_path(@item)
@@ -16,6 +17,12 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+  end
+  
+  def update #商品の更新
+    @item = Item.find(params[:id])
+    @item.update
+    redirect_to admin_item_path
   end
 
   def show
