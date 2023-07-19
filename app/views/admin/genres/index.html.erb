@@ -1,9 +1,10 @@
-<h4>ジャンル一覧・追加</h4>
- <h4>ジャンル名</h4>
-   <%= form_with model:@genre_new, url: admin_genres_path do |f| %> 
-    <%= f.text_field :name %>
-    <%= f.submit '新規登録' %>
-   <% end %>
+<main>
+  <h6>ジャンル一覧・追加</h6>
+  <h6>ジャンル名</h6>
+    <%= form_with model:@genre_new, url: admin_genres_path do |f| %>
+     <%= f.text_field :name %>
+     <%= f.submit '新規登録' %>
+    <% end %>
     <table>
      <thead>
        <tr>
@@ -20,4 +21,4 @@
        </tbody>
      </thead>
     </table>
- 
+</main>
