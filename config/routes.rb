@@ -22,12 +22,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
     patch 'customers/information' => 'customers#update'
-    resources :cart_items, only: [:index, :update, :destroy, :create], controller: "public/cart_items" do
+    resources :cart_items, only: [:index, :update, :destroy, :create], controller: "cart_items" do
       collection do
         delete "destroy_all"
       end
     end
-    resources :orders, only: [:new, :create, :index, :show], controller: "public/cart_items" do
+    resources :orders, only: [:new, :create, :index, :show], controller: "orders" do
       collection do
         post "confirm"
         get "thanks"
