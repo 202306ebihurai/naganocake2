@@ -55,6 +55,17 @@
 
   </table>
 
+  <%= f.hidden_field :customer_id %>
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :postcode %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :receiver %>
+  <%= f.hidden_field :postage %>
+  <%= f.hidden_field :total_amount %>
+  <%= f.hidden_field :status %>
+
   <%= f.submit "注文を確定する", class: "btn btn-success" %>
 
 <% end %>
+
+<button class="btn btn-outline-secondary" onclick="history.back()">前のページへ戻る</button>
