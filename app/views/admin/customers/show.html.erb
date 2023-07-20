@@ -34,9 +34,9 @@
          <th>会員ステータス</th>
          <td>
             <% if @customer.is_deleted %>
-             退会済
-            <% elsif %>
              有効
+            <% elsif %>
+             退会
             <% end %>
            </td>
        </tr>
