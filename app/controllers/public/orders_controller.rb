@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
     @addresses = current_customer.addresses.all
     @cart_items = current_customer.cart_items.all
     @order = Order.new
+    @order.payment_method = params[:order][:payment_method]
     @order.postage = 800
 
     @total_item_amount = 0
@@ -68,11 +69,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = current_customer.orders.all
   end
 
   def show
     @order = Order.find(params[:id])
-
+    @order_details = @order.order_details.all
+    @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
   end
 
 

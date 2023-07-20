@@ -56,7 +56,7 @@
   </table>
 
   <%= f.hidden_field :customer_id %>
-  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :payment_method, :value => @order.payment_method %>
   <%= f.hidden_field :postcode %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :receiver %>
