@@ -1,8 +1,8 @@
 <body>
   <h3>商品編集</h3>
-  <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
    <table>
     <thead>
+     <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
      <tbody>
         <tr>
          <th>画像</th>
@@ -34,7 +34,7 @@
          <th></th>
          <td><%= f.submit '変更を保存' %></td>
     </tbody>
+    <% end %>
    </thead>
   </table>
- <% end %>
 </body>
