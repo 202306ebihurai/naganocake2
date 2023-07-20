@@ -1,4 +1,4 @@
-<body>
+
  <h3>商品新規登録</h3>
 
   <table>
@@ -30,10 +30,12 @@
          <td><%= f.radio_button :is_active, "true" %>　販売中
              <%= f.radio_button :is_active, "false" %>　販売停止中</td>
         </tr>
+        <tr>
          <th></th>
          <td><%= f.submit '新規投稿' %></td>
+        </tr>
       <% end %>
     </tbody>
    </thead>
   </table>
-</body>
+
