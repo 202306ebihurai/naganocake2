@@ -1,14 +1,40 @@
 <h2>注文情報確認</h2>
 
+<table>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+  <tr>
+    <td>商品名</td>
+    <td>単価(税込)</td>
+    <td>数量</td>
+    <td>小計</td>
+  </tr>
+
+</table>
+
 <!-- 注文情報の確認用のフォームを作成 -->
 <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-  <p>支払方法: <%= @order.payment_method %></p>
+  <table>
+    <tr>
+      <th>支払方法: </th>
+      <td>
+        <%= @order.payment_method %>
+      </td>
+    </tr>
+    <tr>
+      <th>お届け先: </th>
+      <td>
+        <%= @order.postcode + @order.address %><br>
+        <%= @order.receiver %>
+      </td>
+    </tr>
 
-  <!-- 注文商品一覧や合計金額などの表示 -->
-
-  <%= f.hidden_field :payment_method, value: @order.payment_method %>
-  <%= f.hidden_field :address_type, value: @order.address_type %>
-  <%= f.hidden_field :address_id, value: @order.address_id %>
+  </table>
 
   <%= f.submit "注文を確定する" %>
+
 <% end %>
