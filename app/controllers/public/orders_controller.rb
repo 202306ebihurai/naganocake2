@@ -6,7 +6,16 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @addresses = current_customer.addresses.all
+    @cart_items = current_customer.cart_items.all
     @order = Order.new
+    @order.postage = 800
+
+    @total_item_amount = 0
+    @cart_items.each do |cart_item|
+      @total_item_amount += cart_item.subtotal
+    end
+
+    @total_order_amount = @order.postage + @total_item_amount
 
     if params[:order][:address_type] == "0"
       @order.postcode = current_customer.postcode
@@ -17,30 +26,32 @@ class Public::OrdersController < ApplicationController
       receiver = Address.find(params[:order][:order_address])
       @order.postcode = receiver.postcode
       @order.address = receiver.address
-      @order.name = receiver.receiver
+      @order.receiver = receiver.receiver
       render 'confirm'
     elsif  params[:order][:address_type] == "2"
       @order.postcode = params[:order][:postcode]
       @order.address = params[:order][:address]
-      @order.name = params[:order][:address_name]
+      @order.receiver = params[:order][:address_name]
       render 'confirm'
     else
       render 'new'
     end
 
-    @cart_items = current_customer.cart_items.all
   end
 
   def thanks
   end
 
   def create
+    @order = Order.new
+
   end
 
   def index
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
 
