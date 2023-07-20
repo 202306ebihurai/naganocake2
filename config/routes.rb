@@ -12,8 +12,9 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :admin do
     resources :products, only: [:new, :create, :index, :show, :edit, :update]
-    resources :items
+    resources :items, only:[:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   scope module: :public do
     root "homes#top"
