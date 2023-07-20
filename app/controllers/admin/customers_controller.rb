@@ -6,6 +6,16 @@ class Admin::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
   end
+  
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+  
+  def update
+     @customer = Customer.find(params[:id])
+     @customer.save
+     redirect_to edit_admin_customer_path(@customer)
+  end
 end
 
 private

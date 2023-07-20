@@ -1,5 +1,6 @@
 <main>
-  <h5><%= @customer.full_name %>さんの会員詳細</h5>
+  <h5><%= @customer.full_name %>さんの会員情報編集</h5>
+   <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
    <table>
      <thead>
        <tr>
@@ -8,40 +9,42 @@
        </tr>
        <tr>
          <th>氏名</th>
-         <td><%= @customer.full_name %></td>
+         <td><%= f.text_field :last_name %></td>
+         <td><%= f.text_field :first_name %></td>
        </tr>
        <tr>
          <th>フリガナ</th>
-         <td><%= @customer.full_name_kana %></td>
+         <td><%= f.text_field :last_name_kana %></td>
+         <td><%= f.text_field :first_name_kana%></td>
        </tr>
        <tr>
          <th>郵便番号</th>
-         <td><%= @customer.postcode %></td>
+         <td><%= f.text_field :postcode %></td>
        </tr>
        <tr>
          <th>住所</th>
-         <td><%= @customer.address %></td>
+         <td><%= f.text_field :address %></td>
        </tr>
        <tr>
          <th>電話番号</th>
-         <td><%= @customer.phone_number %></td>
+         <td><%= f.text_field :phone_number %></td>
        </tr>
        <tr>
          <th>メールアドレス</th>
-         <td><%= @customer.email %></td>
+         <td><%= f.text_field :email %></td>
        </tr>
        <tr>
          <th>会員ステータス</th>
          <td>
-            <% if @customer.is_deleted %>
-             退会済
-            <% elsif %>
-             有効
-            <% end %>
-           </td>
+          <%= f.radio_button :is_deleted, "false" %>　有効
+          <%= f.radio_button :is_deleted, "true" %>　退会
+         </td>
+       </tr>
+       <tr>
+         <td></td>
+         <th><%= f.submit "変更を保存" %></th>
        </tr>
      </thead>
    </table>
-  　 <%= link_to edit_admin_customer_path(@customer) do %> 編集する<% end %>
-  　  <%= link_to edit_admin_customer_path(@customer) do %>注文履歴一覧<% end %>
+  <% end %>
 </main>
