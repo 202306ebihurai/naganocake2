@@ -27,25 +27,35 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-def create
-  @cart_item = current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
+  def create
+    @cart_item = current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
 
-  if @cart_item.present?
-    @cart_item.quantity += cart_item_params[:quantity].to_i
-    if @cart_item.save
-      redirect_to cart_items_path, notice: "カート内の商品を更新しました。"
-    else
-      redirect_to cart_items_path, alert: "カート内の商品の更新に失敗しました。"
-    end
-  else
-    @cart_item = current_customer.cart_items.build(cart_item_params)
-    if @cart_item.save
-      redirect_to cart_items_path, notice: "カートに商品を追加しました。"
-    else
-      redirect_to cart_items_path, alert: "カートへの商品追加に失敗しました。"
+    if @cart_item.present?  #カート内に商品が存在するとき
+      @cart_item.quantity += cart_item_params[:quantity].to_i  #数量を追加
+      if @cart_item.save
+        flash[:notice] = "カート内の商品を更新しました。"
+        redirect_to cart_items_path
+      else
+        redirect_to request.referer
+      end
+    else  #カート内に商品が存在しないとき
+      @cart_item = current_customer.cart_items.build(cart_item_params)
+      if @cart_item.valid? # 保存前に@cart_itemが有効であるかをチェック
+        if @cart_item.save
+          flash[:notice] = "カートに商品を追加しました。"
+          redirect_to cart_items_path
+        else
+          redirect_to request.referer
+        end
+      else  #showビューを再描画
+        @item = Item.find(cart_item_params[:item_id])
+        @item_price_with_tax = @item.with_tax_price
+        @genre = Genre.all
+        flash[:alert] = "数量を選択してください。"
+        render 'public/items/show'
+      end
     end
   end
-end
 
 
   private
