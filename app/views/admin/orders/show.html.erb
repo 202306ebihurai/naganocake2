@@ -14,16 +14,23 @@
       </tr>
       <tr>
         <th>配送先</th>
-        <td>〒<%= @customer.postcode %> <%= @customer.address %></td>
-        <td><%= @customer.receiver %></td>
+        <td>
+          〒<%= @order.postcode %> <%= @order.address %>
+           <br><%= @order.receiver %>
+        </td>
       </tr>
       <tr>
         <th>支払方法</th>
-        <td></td>
+        <td><%= @order.payment_method %></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <td></td>
+        <td>
+           <%= form_with model:@order, url: admin_order_path, method: :patch do |f| %>
+               <%= f.select :status, Order.statuses.keys.map {|k| [k]} %>
+              <%= f.submit '更新' %>
+           <% end %>
+        </td>
       </tr>
     </thred>
   </table>
