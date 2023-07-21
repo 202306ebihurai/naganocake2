@@ -1,5 +1,12 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :cart_check, only: [:new, :confirm, :create]
+
+  def cart_check
+    unless CartItem.find_by(customer_id: current_customer.id)
+      redirect_to cart_items_path
+    end
+  end
 
   def new
     @order = Order.new
@@ -35,7 +42,12 @@ class Public::OrdersController < ApplicationController
       @order.postcode = params[:order][:postcode]
       @order.address = params[:order][:address]
       @order.receiver = params[:order][:address_name]
-      render 'confirm'
+      if @order.valid?
+        render 'confirm'
+      else
+        flash[:alert] = "お届け先を入力してください。"
+        render 'new'
+      end
     else
       render 'new'
     end
@@ -71,7 +83,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.all.page(params[:page])
   end
 
   def show
