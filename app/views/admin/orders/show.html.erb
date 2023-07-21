@@ -10,11 +10,12 @@
       </tr>
       <tr>
         <th>注文日</th>
-        <td><%= @customer.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
         <th>配送先</th>
-        <td></td>
+        <td>〒<%= @customer.postcode %> <%= @customer.address %></td>
+        <td><%= @customer.receiver %></td>
       </tr>
       <tr>
         <th>支払方法</th>
