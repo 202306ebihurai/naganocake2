@@ -1,12 +1,15 @@
-<div class="genres-box">
-  <p><b>ジャンル検索</b></p>
-  <div>
-    <p>ケーキ</p>
-    <p>焼き菓子</p>
-    <p>プリン</p>
-    <p>キャンディ</p>
-  </div>
-</div>
+    <div class="col-md-2">
+      <ul class = "list-unstyled">
+        <li class = "list-group-item">
+          <b>ジャンル検索</b>
+        </li>
+        <% @genre.each do |genre| %>
+          <li class = "list-group-item">
+            <%= genre.name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
 <div>
   <p>画像</p>
@@ -24,7 +27,3 @@
 
   </div>
 </div>
-
-<%= link_to "TOP", root_path %>
-<%= link_to "ABOUT", about_path %>
-<%= link_to "商品一覧", items_path %>
