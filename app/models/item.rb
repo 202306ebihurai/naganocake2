@@ -15,5 +15,10 @@ class Item < ApplicationRecord
 
   
   validates :is_active, inclusion: {in: [true, false]} #販売ステータス
-
+  
+  
+  def subtotal #アイテム小
+    (item.with_tax_price * quantity)
+  end
+ 
 end

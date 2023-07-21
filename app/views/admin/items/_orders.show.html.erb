@@ -1,0 +1,23 @@
+<table>
+    <thred>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+        <th></th>
+      </tr>
+       <tbody>
+         <% order_items.each do |item| %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.with_tax_price %></td>
+            <td><%= item.subtotal %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+       </tbody>
+    </thred>
+  </table>
