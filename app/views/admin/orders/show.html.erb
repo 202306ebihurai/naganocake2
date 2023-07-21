@@ -26,11 +26,29 @@
       <tr>
         <th>注文ステータス</th>
         <td>
-           <%= form_with model:@order, url: admin_order_path, method: :patch do |f| %>
+           <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
                <%= f.select :status, Order.statuses.keys.map {|k| [k]} %>
               <%= f.submit '更新' %>
            <% end %>
         </td>
+      </tr>
+    </thred>
+  </table>
+  
+  <!--画面下商品詳細-->
+  
+  <table>
+    <thred>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td><%= %></td>
       </tr>
     </thred>
   </table>
