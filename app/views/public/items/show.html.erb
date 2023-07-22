@@ -1,30 +1,46 @@
-<div class="genres-box">
-  <p><b>ジャンル検索</b></p>
-  <div>
-    <p>ケーキ</p>
-    <p>焼き菓子</p>
-    <p>プリン</p>
-    <p>キャンディ</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+
+    <div class="col-md-2 mt-5">
+      <table class="table table-bordered table-hover table-sm">
+        <thead>
+          <tr>
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genre.each do |genre| %>
+            <tr>
+              <td><%= genre.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-10 mt-5">
+      <div class="d-flex">
+        <div class="mr-3">
+          <%= image_tag @item.get_image, width: "300px" %>
+        </div>
+        <div>
+          <h2><%= @item.name %></h2>
+          <p><%= @item.introduction %></p>
+          <p>¥<%= @item_price_with_tax.to_s(:delimited) %>(税込)</p>
+
+          <% if customer_signed_in? %>
+            <p>
+              <%= form_with model: CartItem.new, url: cart_items_path, method: :post do |f| %>
+                <%= f.hidden_field :item_id, value: @item.id %><!--hidden_fieldでitem_idを設定していることを確認-->
+                <%= f.select :quantity, (1..10), include_blank: "個数選択", required: true %>
+                <%= f.submit "カートに入れる", class:"btn btn-success" %>
+                <div class="error-box"><%= flash[:alert] %></div>
+              <% end %>
+            </p>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<div>
-  <p>画像</p>
-  <div>
-    <h2><%= @item.name %></h2>
-    <h3><%= @item.introduction %></h3>
-    <h3>¥<%= @item_price_with_tax %>(税込)</h3>
-    <p>
-      <%= form_with model: CartItem.new, url: cart_items_path, method: :post do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :quantity, (1..10), include_blank: "個数選択" %>
-        <%= f.submit "カートに入れる" %>
-      <% end %>
-    </p>
-
-  </div>
-</div>
-
-<%= link_to "TOP", root_path %>
-<%= link_to "ABOUT", about_path %>
-<%= link_to "商品一覧", items_path %>
