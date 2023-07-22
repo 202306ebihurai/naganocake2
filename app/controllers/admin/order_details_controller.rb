@@ -1,17 +1,17 @@
 class Admin::OrderDetailsController < ApplicationController
 
-  def update
+  def update #制作ステータスの更新
     @order_detail = OrderDetail.find(params[:id])
-    @order_detail.update(detail_params)
-    redirect_to admin_order_path(@order)
+    @order_detail.update!(order_detail_params)
+    redirect_to admin_order_path(@order_detail.order)
   end
-  
-  
+
+
   private
-    def detail_params
-         params.require(:order_detail).permit(:order_id, :item_id, :add_tax_price, :quantity, :making_status)
+    def order_detail_params
+         params.require(:order_detail).permit(:making_status)
     end
-   
+
 end
 
 
