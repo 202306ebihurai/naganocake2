@@ -2,8 +2,8 @@
   <h3>商品編集</h3>
    <table>
     <thead>
+     <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
      <tbody>
-       <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
         <tr>
          <th>画像</th>
          <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -33,7 +33,8 @@
         </tr>
          <th></th>
          <td><%= f.submit '変更を保存' %></td>
-      <% end %>
     </tbody>
+    <% end %>
    </thead>
   </table>
+

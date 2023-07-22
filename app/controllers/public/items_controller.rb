@@ -8,5 +8,13 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_price_with_tax = @item.with_tax_price
+    @cart_item = CartItem.new
+    @genre = Genre.all
+  end
+
+  def search
+    @items = Item.where("name LIKE ?", "%#{params[:word]}%")
+    @genre = Genre.all
+    render "search"
   end
 end
