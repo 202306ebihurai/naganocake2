@@ -16,7 +16,7 @@
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <%= image_tag 'no_image', width: "100px", class: "border" %>
+                <%= image_tag cart_item.item.image, width: "100px" %>
                 <%= cart_item.item.name %>
               </td>
               <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>

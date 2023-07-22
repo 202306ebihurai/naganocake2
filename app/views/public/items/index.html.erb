@@ -27,7 +27,7 @@
           <div class="mt-2 mr-2">
             <p class="break-word">
               <%= link_to item_path(item) do %>
-                <%= image_tag 'no_image', width: "200px", class: "border" %>
+                <%= image_tag item.get_image, width: "200px" %>
               <% end %>
             </p>
             <p class="text-break"><%= item.name %></p>
