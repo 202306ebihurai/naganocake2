@@ -8,6 +8,7 @@ class Public::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @item_price_with_tax = @item.with_tax_price
+    @cart_item = CartItem.new
     @genre = Genre.all
   end
 end
