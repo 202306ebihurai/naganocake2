@@ -11,4 +11,10 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genre = Genre.all
   end
+
+  def search
+    @items = Item.where("name LIKE ?", "%#{params[:word]}%")
+    @genre = Genre.all
+    render "search"
+  end
 end

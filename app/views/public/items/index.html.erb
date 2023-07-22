@@ -24,7 +24,7 @@
       </div>
       <div class="item-box d-flex flex-wrap">
         <% @items.each do |item| %>
-          <div class="mt-2 mr-2">
+          <div class="mt-2 mr-2 border col-3">
             <p class="break-word">
               <%= link_to item_path(item) do %>
                 <%= image_tag item.get_image, width: "200px" %>

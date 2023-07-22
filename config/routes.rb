@@ -41,6 +41,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       end
     end
     resources :addresses, except: [:show]
+    get "/search" => "items#search"
+
   end
 
 
