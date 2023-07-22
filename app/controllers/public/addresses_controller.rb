@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+  before_action :authenticate_customer!
+
   def index
     @address = Address.new
     @addresses = current_customer.addresses
@@ -12,7 +14,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       @addresses = current_customer.addresses
-      flash[:notice] = "情報に不備があります。"
+      flash[:alert] = "情報に不備があります。"
       render :index
     end
   end

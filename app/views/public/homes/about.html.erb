@@ -1,10 +1,21 @@
-<h1>About</h1>
-<p>ながのCAKEは全国発送可能なケーキ屋さんです。</p>
-<p>お子様からお年寄りの方までお召し上がりいただけるよう、</p>
-<p>様々なバリエーションをご用意しております。</p>
-<p>また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。</p>
-<p>ぜひご注文下さい。</p>
-
-<%= link_to "TOP", root_path %>
-<%= link_to "ABOUT", about_path %>
-<%= link_to "商品一覧", items_path %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class ="col-md-12 mt-5 text-center">
+      <div>
+        <h1>About</h1>
+      </div>
+      <div>
+        <h3>
+          ながのCAKEは全国発送可能なケーキ屋さんです。<br>
+          お子様からお年寄りの方までお召し上がりいただけるよう、<br>
+          様々なバリエーションをご用意しております。<br>
+          また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
+          ぜひご注文下さい。
+        </h3>
+      </div>
+      <div>
+        <%= image_tag 'no_image', size: "100%", class: "border" %>
+      </div>
+    </div>
+  </div>
+</div>
