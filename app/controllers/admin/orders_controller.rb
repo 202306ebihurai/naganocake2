@@ -5,7 +5,10 @@ class Admin::OrdersController < ApplicationController
      @order = Order.find(params[:id])
      @item = Item.find(params[:id])
      @order_items = @order.order_details.all #注文ごとに紐づいた商品の表示
-    
+     @order_details = @order.order_details.all
+     @total_item_amount = @order_details.sum { |order_detail| order_detail.subtotal }
+     @order = Order.find(params[:id])
+     
   end
 
   def update　#注文ステータスの更新
