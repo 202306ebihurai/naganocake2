@@ -64,4 +64,20 @@
        </tbody>
     </thred>
   </table>
+  <table>
+    <thred>
+      <tr>
+        <th>商品合計</th>
+        <td><%= @order.total_item_amount.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th>送料</th>
+        <td><%= @order.postage.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <th>請求金額合計</th>
+        <td><%= @order.total_amount.to_s(:delimited) %></td>
+      </tr>
+    </thred>
+  </table>
 </main>
