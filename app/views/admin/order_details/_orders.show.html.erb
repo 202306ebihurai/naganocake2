@@ -14,7 +14,7 @@
             <td><%= item.name %></td>
             <td><%= item.with_tax_price %></td>
             <td><%= item.name %></td>
-            <td><%= item.total_item_amount %></td>
+            <td><%= item.name %></td>
             <td></td>
           </tr>
          <% end %>
@@ -22,4 +22,4 @@
     </thred>
   </table>
   
-  
+   <%= render 'admin/order_details/orders.show', order_items: @order_items %>

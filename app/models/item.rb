@@ -10,14 +10,10 @@ class Item < ApplicationRecord
 
 
   def with_tax_price#税込み価格
-    (price * (1 + TAX_RATE * 0.01)).floor
+   (price * (1 + TAX_RATE * 0.01)).floor
   end
   
-  #def item_quantity #アイテム小計
-   # (item.with_tax_price * quantity)
-  #end
-  
-  def total_item_amount#アイテム数量
+  def total_item_amount #アイテム合計金額
     order_details.sum { |order_detail| order_detail.subtotal }
   end
 
