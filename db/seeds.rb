@@ -13,13 +13,16 @@ Genre.create!([
   { name: "キャンディ" }
 ])
 
-Item.create!(
+item1 = Item.new(
   name: "いちごのショートケーキ（ホール）",
   introduction: "栃木県産のとちおとめを贅沢に使用しています。",
   price: "2500",
   is_active: true,
   genre_id: 1,
 )
+item1.image.attach(io: File.open(Rails.root.join("app/assets/images/cake_sample.png")), filename: "cake_sample.png")
+item1.save!
+
 Item.create!(
   name: "ストロベリーショートケーキ",
   introduction: "甘酸っぱいストロベリーがたっぷりのせられた、ふんわりとしたショートケーキです。",
