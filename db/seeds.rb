@@ -106,3 +106,8 @@ Customer.create!(
   password: "password",
   is_deleted: false
 )
+
+Admin.create!(
+  email: "testadmin@example.com",
+  password: "aaaaaa",
+  )
