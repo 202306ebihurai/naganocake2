@@ -30,7 +30,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_type] == "0"
       @order.postcode = current_customer.postcode
       @order.address = current_customer.address
-      @order.receiver = current_customer.last_name + " " + current_customer.first_name
+      @order.receiver = current_customer.full_name
       render 'confirm'
     elsif  params[:order][:address_type] == "1"
       receiver = Address.find(params[:order][:order_address])
@@ -38,14 +38,21 @@ class Public::OrdersController < ApplicationController
       @order.address = receiver.address
       @order.receiver = receiver.receiver
       render 'confirm'
-    elsif  params[:order][:address_type] == "2"
-      @order.postcode = params[:order][:postcode]
-      @order.address = params[:order][:address]
-      @order.receiver = params[:order][:address_name]
-      if @order.valid?
+    elsif params[:order][:address_type] == "2"
+      @new_order = current_customer.addresses.new
+      @new_order.postcode = params[:order][:postcode]
+      @new_order.address = params[:order][:address]
+      @new_order.receiver = params[:order][:address_name]
+
+      if @new_order.save
+        byebug
+        @order.postcode = @new_order.postcode
+        @order.address = @new_order.address
+        @order.receiver = @new_order.receiver
         render 'confirm'
       else
-        flash[:alert] = "お届け先を入力してください。"
+        # byebug
+        flash[:alert] = "お届け先の内容に不備があります<br>・#{@new_order.errors.full_messages.join('<br>・')}"
         render 'new'
       end
     else

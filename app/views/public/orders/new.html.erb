@@ -47,9 +47,14 @@
                   <td><%= f.text_field :address_name %></td>
                 </tr>
               </table>
-              <p class="notice"><%= flash[:alert] %></p>
             </div>
-
+            <div class="error-box">
+              <% flash.each do |key, value| %>
+                <p class="alert alert-<%= key %>">
+                  <%= sanitize value, tags: %w(br) %>
+                </p>
+              <% end %>
+            </div>
           </div>
 
           <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
