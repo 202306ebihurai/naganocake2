@@ -1,5 +1,5 @@
 <main>
-  <h5>ジャンル編集</h5>
+  <h5 class ="bg-light">ジャンル編集</h5>
    <table>
      <thead>
        <tbody>
@@ -8,7 +8,7 @@
          <td>
          　 <%= form_with model:@genre, url: admin_genre_path(@genre), method: :patch do |f| %>
          　 <%= f.text_field :name %>
-         　<%= f.submit '変更を保存' %>
+         　<%= f.submit '変更を保存', class:"btn btn-outline-success" %>
          　<% end %>
          </td>
          </tr>
