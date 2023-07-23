@@ -45,7 +45,6 @@ class Public::OrdersController < ApplicationController
       @new_order.receiver = params[:order][:address_name]
 
       if @new_order.save
-        byebug
         @order.postcode = @new_order.postcode
         @order.address = @new_order.address
         @order.receiver = @new_order.receiver
