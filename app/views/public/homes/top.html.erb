@@ -20,18 +20,20 @@
 
     <div class="col-md-10 mt-5">
       <div class = "card">
-        <%= image_tag 'no_image', size: "", class: "card-img" %>
-        <div class="card-img-overlay d-flex align-items-center justify-content-center">
-          <p>
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </p>
+        <%= image_tag 'top-pic', class: "card-img" %>
+        <div class="top-text-bg mx-auto card-img-overlay d-flex align-items-center justify-content-center w-75">
+          <div class="text-center text-white font-weight-bold my-3 border-top border-bottom", style="line-height:2rem">
+            <h3 class="mt-2"><b>ようこそ、ながのCAKEへ！</b></h3>
+            <h5>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </h5>
+          </div>
         </div>
       </div>
 
-      <h2>新着商品</h2>
+      <h3 class="mt-4">新着商品</h3>
       <div class="d-flex">
         <% @items.each do |item| %>
           <div class="mt-2 mr-2">
@@ -41,7 +43,7 @@
               <% end %>
             </p>
             <p><%= item.name %></p>
-            <p><%= item.with_tax_price.to_s(:delimited) %>(税込)</p>
+            <p>¥<%= item.with_tax_price.to_s(:delimited) %>(税込)</p>
           </div>
         <% end %>
       </div>
