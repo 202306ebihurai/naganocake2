@@ -1,40 +1,50 @@
-
-  <h3>商品編集</h3>
-   <table>
-    <thead>
-     <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
-     <tbody>
-        <tr>
-         <th>画像</th>
-         <td><%= f.file_field :image, accept: "image/*" %></td>
-        </th>
-        <tr>
-         <th>商品名</th>
-         <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-         <th>商品説明</th>
-         <td><%= f.text_area :introduction %></td>
-        </tr>
-        <tr>
-         <th>ジャンル</th>
-         <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
-        </tr>
-        <tr>
-         <th>税抜価格</th>
-         <td><%= f.text_field :price %>円</td>
-        </tr>
-        <tr>
-         <th>販売ステータス</th>
-         <td>
-          <%= f.radio_button :is_active, "true" %>販売中
-          <%= f.radio_button :is_active, "false" %>販売停止中
-         </td>
-        </tr>
-         <th></th>
-         <td><%= f.submit '変更を保存' %></td>
-    </tbody>
-    <% end %>
-   </thead>
-  </table>
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h3>商品編集</h3>
+     <table class="table table-borderless">
+      <table>
+       <thead>
+        <tbody>
+         <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
+           <tr>
+            <th>画像</th>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+           </th>
+           <tr>
+            <th>商品名</th>
+            <td><%= f.text_field :name, class:"form-control" %></td>
+           </tr>
+           <tr>
+            <th>商品説明</th>
+            <td><%= f.text_area :introduction, class:"form-control" %></td>
+           </tr>
+           <tr>
+            <th>ジャンル</th>
+            <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
+           </tr>
+           <tr>
+            <th>税抜価格</th>
+            <td><%= f.text_field :price, class:"form-control" %>円</td>
+           </tr>
+           <tr>
+            <th>販売ステータス</th>
+            <td>
+             <%= f.radio_button :is_active, "true" %>販売中
+             <%= f.radio_button :is_active, "false" %>販売停止中
+            </td>
+           </tr>
+           <tr>
+            <th></th>
+            <td><%= f.submit '変更を保存', class:"btn btn-outline-success" %></td>
+           </tr>
+          <% end %>
+       </tbody>
+      </thead>
+     </table>
+    </div>
+   </div>
+ </div>
+    
+   
 
