@@ -13,7 +13,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where("name LIKE ?", "%#{params[:word]}%")
+    @items = Item.where("name LIKE ?", "%#{params[:word]}%").page(params[:page]).per(8)
     @genre = Genre.all
     render "search"
   end
