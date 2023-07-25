@@ -1,34 +1,40 @@
  <div class="container">
+  <div class="row m-4">
+   <div class="col-2"></div>
+   <div class="col-3">
+    <h4>商品編集</h4>
+   </div>
+  </div>
   <div class="row">
-   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3>商品編集</h3>
+   <div class="col-2"></div>
+   <div class="col-6">
      <table class="table table-borderless">
-      <table>
        <thead>
         <tbody>
          <%= form_with model: @item, url: admin_item_path(@item), method: :patch do |f| %>
            <tr>
-            <th>画像</th>
+            <td>画像</td>
             <td><%= f.file_field :image, accept: "image/*" %></td>
            </th>
            <tr>
-            <th>商品名</th>
+            <td>商品名</td>
             <td><%= f.text_field :name, class:"form-control" %></td>
            </tr>
            <tr>
-            <th>商品説明</th>
+            <td>商品説明</td>
             <td><%= f.text_area :introduction, class:"form-control" %></td>
            </tr>
            <tr>
-            <th>ジャンル</th>
+            <td>ジャンル</td>
             <td><%= f.collection_select(:genre_id, Genre.all, :id, :name) %></td>
            </tr>
            <tr>
-            <th>税抜価格</th>
-            <td><%= f.text_field :price, class:"form-control" %>円</td>
+            <td>税抜価格</td>
+            <td><%= f.text_field :price, class:"form-control" %></td>
+            <td>円<td>
            </tr>
            <tr>
-            <th>販売ステータス</th>
+            <td>販売ステータス</td>
             <td>
              <%= f.radio_button :is_active, "true" %>販売中
              <%= f.radio_button :is_active, "false" %>販売停止中
