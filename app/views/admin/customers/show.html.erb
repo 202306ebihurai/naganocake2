@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row">
-   <div class="col-5">
+  <div class="row m-4">
+   <div class="col-7">
       <h5><%= @customer.full_name %>さんの会員詳細</h5>
-       <table class="table">
+       <table class="table table-borderless">
          <thead>
            <tr>
              <td>会員ID</td>
@@ -36,16 +36,19 @@
              <td>会員ステータス</td>
              <td>
                 <% if @customer.is_deleted %>
-                 有効
+                  <p class="text-success"><strong>有効</strong></p>
                 <% elsif %>
-                 退会
+                  <p class="text-muted"><strong>退会</strong></p>
                 <% end %>
                </td>
            </tr>
+           <tr>
+            <td></td>
+            <th> <%= link_to edit_admin_customer_path(@customer), class:"btn btn-outline-success" do %> 編集する<% end %></th>
+            <th> <%= link_to admin_path(@customer), class:"btn btn-outline-primary" do %>注文履歴一覧<% end %></th>
+           </tr>
          </thead>
        </table>
-      　 <%= link_to edit_admin_customer_path(@customer), class:"btn btn-outline-success" do %> 編集する<% end %>
-      　  <%= link_to admin_path(@customer), class:"btn btn-outline-primary" do %>注文履歴一覧<% end %>
     </div>
   </div>
 </div>

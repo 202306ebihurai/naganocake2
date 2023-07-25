@@ -54,6 +54,7 @@
               <th>小計</th>
               <th>制作ステータス</th>
               <th></th>
+           </thred>
             </tr>
              <tbody>
                <% @order_items.each do |item| %>
@@ -71,7 +72,6 @@
                 </tr>
                <% end %>
              </tbody>
-          </thred>
         </table>
        </div>
         <div class="col-3">
@@ -89,8 +89,8 @@
               </tr>
               <tr>
                 <th>請求金額合計</th>
-                <td><%= @order.total_amount.to_s(:delimited) %></td>
-                <td>円</td>
+                <td><strong><%= @order.total_amount.to_s(:delimited) %></strong></td>
+                <td><strong>円</strong></td>
               </tr>
             </thred>
           </table>
