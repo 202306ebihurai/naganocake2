@@ -1,7 +1,13 @@
  <div class="container">
+  <div class="row m-4">
+   <div class="col-2"></div>
+   <div class="col-3">
+     <h4>商品新規登録</h4>
+   </div>
+  </div>
   <div class="row">
-   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3>商品新規登録</h3>
+   <div class="col-3"></div>
+   <div class="col-6">
      <table class="table table-borderless">
       <thead>
        <tbody>
@@ -24,7 +30,8 @@
            </tr>
            <tr>
             <td>税抜価格</td>
-            <td><%= f.text_field :price, placeholder:"1000", class:"form-control" %>円</td>
+            <td><%= f.text_field :price, placeholder:"1,000", class:"form-control" %></td>
+            <td>円</td>
            </tr>
            <tr>
             <td>販売ステータス</td>
