@@ -17,8 +17,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    patch 'order_details/:id' => 'order_details#update'
-
+   # patch 'order_details' => 'order_details#update'
+    resources :order_details, only: [:update]
   end
 
   scope module: :public do
