@@ -1,34 +1,67 @@
-<p class="notice"><%= flash[:notice] %></p>
-<h2>配送先登録/一覧</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class ="col-md-12 mt-5">
 
-<%= form_with model: Address.new, url: addresses_path, method: :post do |f| %>
-  <div>郵便番号(ハイフンなし)<%= f.text_field :postcode %></div>
-  <div>住所<%= f.text_field :address %></div>
-  <div>宛名<%= f.text_field :receiver %></div>
-  <div><%= f.submit "新規登録" %></div>
-  <p class="notice"><%= flash[:alert] %></p>
-<% end %>
+      <p class="notice text-success"><%= flash[:notice] %></p>
+      <h3 class="ml-4 bg-light", style="display: inline;">配送先登録/一覧</h3>
 
-<table class='table table-hover table-inverse'>
-	<thead>
-		<tr>
-			<th>郵便番号</th>
-			<th>住所</th>
-			<th>宛名</th>
-			<th></th>
-		</tr>
-	</thead>
-  <tbody>
-    <% @addresses.each do |address| %>
-      <tr>
-        <td><%= address.postcode %></td>
-        <td><%= address.address %></td>
-        <td><%= address.receiver %></td>
-        <td>
-          <%= link_to "編集する", edit_address_path(address) %>
-          <%= link_to "削除する", address_path(address), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%= form_with model: Address.new, url: addresses_path, method: :post do |f| %>
+        <div class="row mt-4">
+          <div class="col-md-8">
+            <table>
+              <tr>
+                <div calss="form-group">
+                  <td><%= f.label :postcode, "郵便番号(ハイフンなし)",class: "text-nowrap" %></td>
+                  <td><%= f.text_field :postcode, class: "form-control w-50" %></td>
+                </div>
+              </tr>
+              <tr>
+                <div calss="form-group">
+                  <td><%= f.label :address, "住所" %></td>
+                  <td><%= f.text_field :address, class: "form-control", size: 100 %></td>
+                </div>
+              </tr>
+              <tr>
+                <div calss="form-group">
+                  <td><%= f.label :receiver, "宛名" %></td>
+                  <td><%= f.text_field :receiver, class: "form-control w-50" %></td>
+                </div>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-3 d-flex align-items-end">
+              <%= f.submit "新規登録", class: "btn btn-success btn-sm" %>
+          </div>
+          <p class="notice text-danger"><%= flash[:alert] %></p>
+        </div>
+      <% end %>
+
+      <div class="row mt-4">
+        <table class='table table-bordered table-sm'>
+        	<thead>
+        		<tr>
+        			<th>郵便番号</th>
+        			<th>住所</th>
+        			<th>宛名</th>
+        			<th></th>
+        	  </tr>
+        	</thead>
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr>
+                <td><%= address.postcode %></td>
+                <td><%= address.address %></td>
+                <td><%= address.receiver %></td>
+                <td>
+                  <%= link_to "編集する", edit_address_path(address), class: "btn btn-success btn-sm" %>
+                  <%= link_to "削除する", address_path(address), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
