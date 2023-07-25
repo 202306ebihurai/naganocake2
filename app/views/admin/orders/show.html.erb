@@ -63,7 +63,7 @@
                   <td><%= item.quantity %></td>
                   <td><%= item.item.total_item_amount %></td>
                   <td>
-                  <%= form_with model: item, url: admin_path(item.id), method: :patch do |f| %>
+                  <%= form_with model: item, url: admin_order_path(@order), method: :patch do |f| %>
                         <%= f.select :making_status, OrderDetail.making_statuses.keys.map  %> <!--oder_detailじゃだめ-->
                         <%= f.submit '更新', class:"btn btn-outline-success"  %>
                   <% end %>
