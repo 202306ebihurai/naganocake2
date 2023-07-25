@@ -8,7 +8,12 @@
 
     <div class="col-md-10 mt-5">
       <!--商品一覧-->
-      <h3 style="display: inline;">「<%= params[:word] %>」の検索結果</h3>
+      <% if params[:word] %>
+        <h3 style="display: inline;">「<%= params[:word] %>」の検索結果</h3>
+      <% elsif params[:genre_id] %>
+        <h3 style="display: inline;">「<%= @genres.name %>」ジャンルの検索結果</h3>
+      <% else %>
+      <% end %>
       <p style="display: inline;">(全<%= @items.count %>件)</p>
       <div class="mt-4">
         <%= render 'public/shared/item_list' %>
