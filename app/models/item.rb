@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   def total_item_amount #アイテム合計金額
     order_details.sum { |order_detail| order_detail.subtotal }
   end
+  
 
 
   def get_image(width, height)

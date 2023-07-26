@@ -33,7 +33,8 @@
               <th>注文ステータス</th>
               <td>
                  <%= form_with model:@order, url: admin_order_path(@order), method: :patch do |f| %>
-                     <%= f.select :status, Order.statuses.keys.map  %>
+                     <%= f.select :status,Order.statuses.keys.map {|k| [t("enums.order.status.#{k}"), k]} %>
+                     <!--Order.statuses.keys.map-->
                      <%= f.submit '更新', class:"btn btn-outline-success" %>
                  <% end %>
               </td>
@@ -60,10 +61,10 @@
                   <td><%= item.item.name %></td>
                   <td><%= item.item.with_tax_price %></td>
                   <td><%= item.quantity %></td>
-                  <td><%= item.item.total_item_amount %></td>
+                  <td><%= item.subtotal %></td>
                   <td>
                   <%= form_with model: item, url: admin_order_detail_path(item.id), method: :patch do |f| %>
-                        <%= f.select :making_status, OrderDetail.making_statuses.keys.map  %> 
+                        <%= f.select :making_status, OrderDetail.making_statuses.keys.map  %>
                         <%= f.submit '更新', class:"btn btn-outline-success"  %>
                   <% end %>
                   </td>
@@ -94,4 +95,3 @@
           </table>
          </div>
       </div>
-        
