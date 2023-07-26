@@ -8,10 +8,9 @@
   <div class="row">
    <div class="col-3"></div>
    <div class="col-6">
+    <%= form_with model:@item, url: admin_items_path do |f| %>
      <table class="table table-borderless">
-      <thead>
        <tbody>
-         <%= form_with model:@item, url: admin_items_path do |f| %>
            <tr>
             <td>画像</td>
             <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -35,20 +34,19 @@
            </tr>
            <tr>
             <td>販売ステータス</td>
-            <td><%= f.radio_button :is_active, "true" %>販売中  
+            <td><%= f.radio_button :is_active, "true" %>販売中
                 <%= f.radio_button :is_active, "false" %>販売停止中</td>
            </tr>
            <tr>
             <td></td>
             <td><%= f.submit ' 新規投稿 ', class:"btn btn-outline-success" %></td>
            </tr>
-         <% end %>
        </tbody>
-      </thead>
      </table>
+    <% end %>
    </div>
   </div>
  </div>
 
- 
+
 

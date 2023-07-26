@@ -7,15 +7,15 @@
    </div>
      <div class="row">
       <div class="col-8 m-4">
+      <%= form_with model:@genre_new, url: admin_genres_path do |f| %>
        <table class="table table-borderless">
-          <%= form_with model:@genre_new, url: admin_genres_path do |f| %>
              <tr>
               <td>ジャンル名</td>
               <td><%= f.text_field :name, placeholder:"ジャンル名" %></td>
               <td><%= f.submit '　新規登録　', class:"btn btn-outline-dark" %></td>
              </tr>
-          <% end %>
         </table>
+       <% end %>
       </div>
      </div>
       <div class="row">
