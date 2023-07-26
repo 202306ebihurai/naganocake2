@@ -25,6 +25,9 @@
                   <%= f.submit "カートに入れる", class:"btn btn-success" %>
                   <div class="error-box"><%= flash[:alert] %></div>
                 <% end %>
+              <% else %>
+                <p class="text-info">ご購入には会員登録が必要です</p>
+                <%= link_to "新規会員登録はこちら！", new_customer_registration_path, class: "btn btn-outline-info btn-lg" %>
               <% end %>
             </div>
           </div>
