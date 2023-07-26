@@ -9,9 +9,9 @@ class Admin::OrderDetailsController < ApplicationController
    # redirect_to admin_order_path(@order_detail.order)
     is_updated = true
     if @order_detail.update(order_detail_params)
-       @order.update(status: 2) if @order_detail.making_status == "in_production"
+       @order.update(status: 2) if @order_detail.making_status == "制作中"
        @order_details.each do |order_detail| 
-        if order_detail.making_status != "production_complete" # 製作ステータスが「製作完了」ではない場合 
+        if order_detail.making_status != "制作完了" # 製作ステータスが「製作完了」ではない場合 
           is_updated = false # 上記で定義してあるis_updatedを「false」に変更する。
         end
       end
