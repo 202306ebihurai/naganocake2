@@ -41,15 +41,15 @@
               <table>
                 <tr>
                   <td><%= f.label :postcode, "郵便番号(ハイフンなし)" %></td>
-                  <td><%= f.text_field :postcode %></td>
+                  <td><%= f.text_field :postcode, class: "form-control w-50" %></td>
                 </tr>
                 <tr>
                   <td><%= f.label :address, "住所" %></td>
-                  <td><%= f.text_field :address %></td>
+                  <td><%= f.text_field :address, class: "form-control", size: 100 %></td>
                 </tr>
                 <tr>
                   <td><%= f.label :address_name, "宛名" %></td>
-                  <td><%= f.text_field :address_name %></td>
+                  <td><%= f.text_field :address_name, class: "form-control w-50" %></td>
                 </tr>
               </table>
             </div>
