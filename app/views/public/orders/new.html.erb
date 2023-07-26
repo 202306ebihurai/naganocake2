@@ -23,7 +23,7 @@
           <div>
             <p><b>お届け先</b></p>
             <div class="mb-2">
-              <%= f.radio_button :address_type, 0, id: "address_select_0" %>
+              <%= f.radio_button :address_type, 0, id: "address_select_0", checked: true %>
               <%= f.label :address_type, "ご自身の住所", for: "address_select_0" %><br>
               <%= "〒" + current_customer.postcode + " " + current_customer.address %><br>
               <%= current_customer.last_name + " " + current_customer.first_name %>
