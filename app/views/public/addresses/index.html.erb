@@ -2,7 +2,7 @@
   <div class="row">
     <div class ="col-md-12 mt-5">
 
-      <p class="notice text-success"><%= flash[:notice] %></p>
+      <!--<p class="notice text-success"></%= flash[:notice] %></p>-->
       <h3 class="ml-4 bg-light", style="display: inline;">配送先登録/一覧</h3>
 
       <%= form_with model: Address.new, url: addresses_path, method: :post do |f| %>

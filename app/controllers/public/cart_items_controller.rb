@@ -9,9 +9,11 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      redirect_to cart_items_path, notice: "数量が更新されました。"
+      flash[:notice] = "数量が更新されました。"
+      redirect_to cart_items_path
     else
-      redirect_to cart_items_path, alert: "数量の更新に失敗しました。"
+      flash[:alert] = "数量の更新に失敗しました。"
+      redirect_to cart_items_path
     end
   end
 
