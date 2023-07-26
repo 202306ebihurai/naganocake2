@@ -7,20 +7,18 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail.update(order_detail_params)
     
    # redirect_to admin_order_path(@order_detail.order)
+   
     is_updated = true
     if @order_detail.update(order_detail_params)
        @order.update(status: 2) if @order_detail.making_status == "制作中"
        @order_details.each do |order_detail| 
-        if order_detail.making_status != "制作完了" # 製作ステータスが「製作完了」ではない場合 
-          is_updated = false # 上記で定義してあるis_updatedを「false」に変更する。
+        if order_detail.making_status != "制作完了"
+          is_updated = false 
         end
       end
       @order.update(status: 3) if is_updated
-      # is_updatedがtrueの場合に、注文ステータスが「発送準備中」に更新されます。上記のif文でis_updatedがfalseになっている場合、更新されません。
     end
     redirect_to admin_order_path(@order)
-    
-    
   end
 
 
