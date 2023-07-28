@@ -1,0 +1,49 @@
+<div class="container mt-5 mb-5">
+  <div class="row mt-3">
+    <div class="col-sm-4 px-sm-0 offset-sm-1">
+　　  <h2>ログイン</h2>
+　　</div>
+  </div>
+  <div class="row my-3">
+    <div class="col-sm-4 px-sm-0 offset-sm-1">
+      会員の方はこちらからログイン
+    </div>
+  </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="row">
+              <div class="col-sm-2 px-sm-0 offset-sm-1">
+                <%= f.label "メールアドレス" %>
+              </div>
+              <div class="col-sm-3 px-sm-0">
+                <%= f.email_field :email, :size => "40", autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-2 px-sm-0 offset-sm-1">
+                <%= f.label "パスワード" %>
+              </div>
+              <div class="col-sm-3 px-sm-0">
+                <%= f.password_field :password, :size => "40", autocomplete: "current-password" %>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2 px-sm-0 offset-sm-1">
+              <%= f.submit "ログイン", class:"btn btn-primary px-4 mt-3 mb-5" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="container col-xs-6 col-xs-offset-2 sign-in-message">
+        <h3>会員登録がお済みでない⽅</h3>
+        <div class="row">
+          <span class="col-xs-offset-"><%= link_to "こちら", new_customer_registration_path %>から会員登録してください。</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

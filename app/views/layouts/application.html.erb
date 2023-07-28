@@ -6,11 +6,96 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-1" href="/"><%= image_tag('logo.png') %></a>
+
+          <ul class="navbar-nav ml-auto">
+            <% if customer_signed_in? %>
+              <li class="nav-item ml-auto">
+                ようこそ、<%= current_customer.last_name %>さん！
+              </li>
+            <% else %>
+            <% end %>
+          </ul>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse flex-column" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <li class="nav-item m-1">
+                  <%= link_to "マイページ", customers_mypage_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "カート", cart_items_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item m-1">
+                  <%= link_to "商品一覧", admin_items_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "会員一覧", admin_customers_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "注文履歴一覧", admin_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+              <% else %>
+                <li class="nav-item m-1">
+                  <%= link_to "About", about_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "商品一覧", items_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+                <li class="nav-item m-1">
+                  <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary btn-sm nav-btn" %>
+                </li>
+              <% end %>
+            </ul>
+            <div class="navbar-nav ml-auto">
+              <%= render 'public/shared/search' %>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+    <main class="mb-auto">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row no-gutters">
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
