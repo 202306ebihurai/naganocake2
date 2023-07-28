@@ -1,24 +1,28 @@
 # README
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 使用方法
+```
+$ git clone git@github.com:202306ebihurai/naganocake2.git
+$ bundle install
+$ rails db:seed
+$ rails s
+```
+※カート機能を使用するには顧客ログインが必要です。
 
-Things you may want to cover:
+# テスト用アカウント
+--管理者用--<br>
+メールアドレス：testadmin@example.com<br>
+パスワード：aaaaaa<br>
 
-* Ruby version
+--顧客用--<br>
+メールアドレス：test@example.com<br>
+パスワード：password<br>
 
-* System dependencies
+# 動作環境
+Rails 6.1.7.3
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 開発者
+- 白津奈実
+- 番匠聡
+- 高根隼大
