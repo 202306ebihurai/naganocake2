@@ -16,13 +16,14 @@ class Item < ApplicationRecord
   def total_item_amount #アイテム合計金額
     order_details.sum { |order_detail| order_detail.subtotal }
   end
-  
+
 
 
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.png')
       image.attach(io: File.open(file_path), filename: 'default-image.png', content_type: 'image/png')
+      image.save
     end
      image.variant(resize_to_limit: [width, height]).processed
   end
