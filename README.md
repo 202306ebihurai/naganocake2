@@ -12,6 +12,7 @@ $ rails s
 
 # テスト用アカウント
 --管理者用--<br>
+ログイン画面：/admin/sign_in<br>
 メールアドレス：testadmin@example.com<br>
 パスワード：aaaaaa<br>
 
